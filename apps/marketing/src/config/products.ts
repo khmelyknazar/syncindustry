@@ -1,4 +1,5 @@
 import { Blocks, Boxes, Building2, Users, Workflow } from "lucide-react";
+import type { Route } from "next";
 
 import type { Product } from "@/types/product";
 
@@ -18,6 +19,15 @@ import type { Product } from "@/types/product";
  * the fabricated-capability problem this project has avoided
  * everywhere else. `ecosystemRole` (already honest, already written)
  * is what their new `/product/[slug]` pages render.
+ *
+ * Each `href` is cast `as Route`: typedRoutes validates *static*
+ * literals like `/product` against `Route` automatically, but for a
+ * *dynamic*-segment literal (`/product/crm` matching `/product/[slug]`)
+ * the check only fires when the literal is written directly inline in
+ * JSX — a literal stored in this array first widens to the `href`
+ * field's declared type, losing that inference. The cast is the
+ * documented Next.js pattern for exactly this case; the slug still
+ * has to match a real `/product/[slug]` page for the route to work.
  */
 export const products: Product[] = [
   {
@@ -26,7 +36,7 @@ export const products: Product[] = [
     description: "Продажі, ліди та воронки в одній системі.",
     icon: Users,
     status: "available",
-    href: "/product/crm",
+    href: "/product/crm" as Route,
     businessProblem:
       "Дані про ліди, клієнтів і задачі розкидані по чатах, таблицях і головах менеджерів — рішення приймаються без повної картини.",
     capabilities: [
@@ -46,7 +56,7 @@ export const products: Product[] = [
     description: "Фінанси, ресурси та операційне управління.",
     icon: Boxes,
     status: "available",
-    href: "/product/erp",
+    href: "/product/erp" as Route,
     ecosystemRole:
       "Розширює той самий Core фінансовими й ресурсними даними — без окремого логіну чи міграції.",
   },
@@ -56,7 +66,7 @@ export const products: Product[] = [
     description: "Автоматизація повторюваних бізнес-процесів.",
     icon: Workflow,
     status: "available",
-    href: "/product/automation",
+    href: "/product/automation" as Route,
     ecosystemRole:
       "З'єднує дані CRM, ERP та зовнішніх сервісів у наскрізні автоматизовані процеси.",
   },
@@ -66,7 +76,7 @@ export const products: Product[] = [
     description: "Внутрішні портали й корпоративні кабінети.",
     icon: Building2,
     status: "available",
-    href: "/product/internal-systems",
+    href: "/product/internal-systems" as Route,
     ecosystemRole:
       "Внутрішні інструменти команди на тому самому фундаменті — не окрема система з нуля.",
   },
@@ -76,7 +86,8 @@ export const products: Product[] = [
     description: "Підключення до інструментів, якими вже користуєтесь.",
     icon: Blocks,
     status: "available",
-    href: "/product/integrations",
+    href: "/product/integrations" as Route,
     ecosystemRole: "З'єднує екосистему Sync Industry з інструментами, що вже працюють у бізнесі.",
   },
 ];
+

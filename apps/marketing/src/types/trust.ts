@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { Route } from "next";
 
 /**
  * Generic icon+title+description item, rendered by `PrincipleList`.
@@ -29,6 +30,6 @@ export interface ProcessStep {
 export interface DocLink {
   title: string;
   description: string;
-  href: string;
+  href: Route;
   icon: LucideIcon;
 }

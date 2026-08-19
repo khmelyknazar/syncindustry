@@ -1,3 +1,5 @@
+import type { Route } from "next";
+
 import { products } from "@/config/products";
 import type { Product, ProductStatus } from "@/types/product";
 
@@ -19,7 +21,7 @@ export type ProductNavItem = Product;
 
 export interface PrimaryNavLink {
   label: string;
-  href: string;
+  href: Route;
 }
 
 export const productNavItems: ProductNavItem[] = products;

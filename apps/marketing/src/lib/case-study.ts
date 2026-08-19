@@ -1,11 +1,17 @@
+import type { Route } from "next";
+
 import { caseStudies } from "@/config/case-studies";
 import type { CaseStudy } from "@/types/case-study";
 
 /** The one place `/work/${slug}` is written — no case study data
  * object carries its own `href`, so the URL structure can't drift
- * out of sync with the actual route file. */
-export function caseStudyHref(slug: string): string {
-  return `/work/${slug}`;
+ * out of sync with the actual route file. Cast to `Route`: `slug` is
+ * a runtime `string`, not a literal, so typedRoutes can't verify it
+ * matches `/work/[slug]` at compile time the way a literal template
+ * (`` `/work/${knownSlug}` `` written directly in JSX) can — this is
+ * the same non-literal-href pattern the Next.js docs cast this way. */
+export function caseStudyHref(slug: string): Route {
+  return `/work/${slug}` as Route;
 }
 
 export function getAllCaseStudies(): CaseStudy[] {

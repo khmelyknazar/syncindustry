@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { Route } from "next";
 
 /**
  * The one product model for the whole site. `slug`/`title`/
@@ -18,7 +19,10 @@ export interface Product {
   description: string;
   icon: LucideIcon;
   status: ProductStatus;
-  href: string;
+  /** Typed against real app routes (typedRoutes) — every product's
+   * `href` here is checked at compile time against `.next/types`
+   * instead of only at every `<Link>` call site. */
+  href: Route;
   /** `available` products only — the operational problem it addresses. */
   businessProblem?: string;
   /** `comingSoon` products only — how it connects to what already exists. */

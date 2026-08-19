@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
- 
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   // Design-system and other workspace packages ship untranspiled TS —
@@ -12,5 +12,5 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["lucide-react"],
   },
 };
- 
+
 export default nextConfig;
