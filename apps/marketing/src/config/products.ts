@@ -55,7 +55,7 @@ export const products: Product[] = [
     title: "ERP",
     description: "Фінанси, ресурси та операційне управління.",
     icon: Boxes,
-    status: "available",
+    status: "comingSoon",
     href: "/product/erp" as Route,
     ecosystemRole:
       "Розширює той самий Core фінансовими й ресурсними даними — без окремого логіну чи міграції.",
