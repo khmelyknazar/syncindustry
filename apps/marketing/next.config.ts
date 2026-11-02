@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
     typedRoutes: true,
     optimizePackageImports: ["lucide-react"],
   },
+  async redirects() {
+    return [
+      {
+        // Старий URL кейсу містив назву внутрішнього інструменту.
+        source: "/work/document-automation-n8n",
+        destination: "/work/document-automation",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
