@@ -6,19 +6,15 @@ import { SolutionsGrid } from "@/features/solutions/solutions-grid";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Продукти",
+  title: "Послуги: CRM, автоматизація, інтеграції та AI",
   description:
-    "CRM, ERP, Business Automation, Internal Systems та Integrations — одна екосистема на спільному Core.",
+    "Впроваджуємо CRM, автоматизуємо бізнес-процеси, об'єднуємо месенджери й сервіси та підключаємо AI до роботи з документами.",
   path: "/product",
 });
 
 /**
- * Pure overview now — CRM used to double as both "the product
- * index" and "CRM's own page" (it lived at this bare `/product` URL
- * back when it was the only product). Now that all five are peers,
- * CRM has its own page at `/product/crm` like the rest, and this
- * page is just the index: `SolutionsGrid`, no product-specific
- * header text.
+ * Огляд послуг. URL лишається `/product`, щоб не ламати індексацію
+ * і внутрішні посилання; змінено лише зміст.
  */
 export default function ProductIndexPage() {
   return (
@@ -27,14 +23,15 @@ export default function ProductIndexPage() {
         <Container className="flex flex-col gap-16">
           <header className="flex max-w-[640px] flex-col gap-4">
             <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-[var(--color-brand-primary)]">
-              Продукти
+              Послуги
             </p>
             <h1 className="text-[length:var(--font-display-md-size)] leading-[var(--font-display-md-line)] font-semibold tracking-[-0.02em] text-[var(--color-text-primary)]">
-              Одна екосистема, п&apos;ять продуктів
+              Рішення, які прибирають ручну роботу з вашого бізнесу
             </h1>
             <p className="text-[length:var(--font-body-lg-size)] leading-[var(--font-body-lg-line)] text-[var(--color-text-secondary)]">
-              CRM, ERP, автоматизація, внутрішні системи та інтеграції — на спільному
-              Core, без окремого логіну чи міграції даних між ними.
+              Спочатку розбираємося, як працює ваш бізнес, а потім проєктуємо й
+              впроваджуємо CRM, автоматизацію, інтеграції та AI-рішення під ваші
+              процеси.
             </p>
           </header>
 
