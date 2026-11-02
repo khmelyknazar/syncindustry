@@ -1,8 +1,8 @@
 /**
- * The page's single H1. v2 (Redesign brief): replaced with the
- * supplied cinematic headline — still result-oriented, still no
- * "We help businesses..." filler, but built to carry the larger
- * `--font-display-xl` scale now available in the token set.
+ * The page's single H1. Формулювання з брифу позиціонування:
+ * «Перетворюємо складні бізнес-процеси на злагоджені цифрові системи».
+ * Основне позиціонування («Консалтинг і автоматизація бізнесу»)
+ * винесено в HeroEyebrow над заголовком.
  */
 export function HeroHeadline({ id }: { id: string }) {
   return (
@@ -15,9 +15,9 @@ export function HeroHeadline({ id }: { id: string }) {
         "xl:text-[length:var(--font-display-xl-size)] xl:leading-[var(--font-display-xl-line)]",
       ].join(" ")}
     >
-      Перетворюємо хаос бізнес-процесів
+      Перетворюємо складні бізнес-процеси
       <br />
-      на одну працюючу систему.
+      на злагоджені цифрові системи.
     </h1>
   );
 }
