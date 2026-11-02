@@ -38,6 +38,7 @@ export async function generateMetadata({
     description: caseStudy.summary,
     path: `/work/${caseStudy.slug}`,
   });
+}
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
