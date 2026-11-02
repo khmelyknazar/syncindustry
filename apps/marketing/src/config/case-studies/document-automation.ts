@@ -53,14 +53,14 @@ export const documentAutomationCaseStudy: CaseStudy = {
     {
       type: "screenshot",
       src: "/work/document-automation/check.PNG",
-      alt: "ОПИШІТЬ, ЩО САМЕ ВИДНО НА ПЕРШОМУ ЗОБРАЖЕННІ",
-      caption: "Короткий підпис до першого зображення.",
+      alt: "чек ябко",
+      caption: "Чек ЯБКО",
     },
     {
       type: "screenshot",
       src: "/work/document-automation/check1.jpg",
-      alt: "ОПИШІТЬ, ЩО САМЕ ВИДНО НА ДРУГОМУ ЗОБРАЖЕННІ",
-      caption: "Короткий підпис до другого зображення.",
+      alt: "результат обробки",
+      caption: "Результат після АІ обробки",
     },
   ],
 };
