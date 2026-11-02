@@ -49,5 +49,18 @@ export const documentAutomationCaseStudy: CaseStudy = {
 
   // lessonsLearned: TODO — що б ви зробили інакше, які обмеження виявились важливими на практиці.
 
-  // assets: додайте лише за наявності реальних скріншотів/діаграм цього проєкту.
+   assets: [
+    {
+      type: "screenshot",
+      src: "/work/document-automation/check.PNG",
+      alt: "ОПИШІТЬ, ЩО САМЕ ВИДНО НА ПЕРШОМУ ЗОБРАЖЕННІ",
+      caption: "Короткий підпис до першого зображення.",
+    },
+    {
+      type: "screenshot",
+      src: "/work/document-automation/check1.jpg",
+      alt: "ОПИШІТЬ, ЩО САМЕ ВИДНО НА ДРУГОМУ ЗОБРАЖЕННІ",
+      caption: "Короткий підпис до другого зображення.",
+    },
+  ],
 };
