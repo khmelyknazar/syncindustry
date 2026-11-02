@@ -7,6 +7,7 @@ import { PageWrapper } from "@/components/page-wrapper";
 import { Button } from "@/components/ui/button";
 import { navigationCta } from "@/config/navigation";
 import { products } from "@/config/products";
+import { siteConfig } from "@/config/site";
 import { SolutionCapabilityList } from "@/features/solutions/solution-capability";
 import { SolutionStatus } from "@/features/solutions/solution-status";
 import { createPageMetadata } from "@/lib/seo";
@@ -15,15 +16,6 @@ interface ProductDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-/**
- * One template for all five products, CRM included — every section
- * below is conditional on the field actually existing in
- * `config/products.ts`. CRM currently has `businessProblem` and
- * `capabilities`; the other four only have `ecosystemRole`. That
- * asymmetry is real (nobody has written the deeper content for the
- * other four yet) and the template shows exactly that — it doesn't
- * pad the thin ones to look as complete as CRM's.
- */
 function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);
 }
@@ -40,17 +32,19 @@ export async function generateMetadata({
 
   if (!product) {
     return createPageMetadata({
-      title: "Продукт не знайдено",
-      description: "Цей продукт не існує.",
+      title: "Сторінку не знайдено",
+      description: "Цієї сторінки не існує.",
       path: `/product/${slug}`,
       index: false,
     });
   }
 
   return createPageMetadata({
-    title: product.title,
-    description: product.description,
+    title: product.seoTitle ?? product.title,
+    description: product.seoDescription ?? product.description,
     path: `/product/${product.slug}`,
+    // Сторінки "Скоро" не індексуємо, доки в них немає власного змісту.
+    index: product.status === "available",
   });
 }
 
@@ -62,14 +56,34 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
+  const serviceJsonLd =
+    product.status === "available"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: product.seoTitle ?? product.title,
+          description: product.seoDescription ?? product.description,
+          url: new URL(`/product/${product.slug}`, siteConfig.url).toString(),
+          provider: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+        }
+      : null;
+
   return (
     <PageWrapper>
+      {serviceJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(serviceJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <div className="py-16 sm:py-24">
         <Container size="narrow" className="flex flex-col gap-8">
           <header className="flex flex-col gap-4">
             <SolutionStatus status={product.status} />
             <h1 className="text-[length:var(--font-display-md-size)] leading-[var(--font-display-md-line)] font-semibold tracking-[-0.02em] text-[var(--color-text-primary)]">
-              {product.title}
+              {product.h1 ?? product.title}
             </h1>
             <p className="text-[length:var(--font-body-lg-size)] leading-[var(--font-body-lg-line)] text-[var(--color-text-secondary)]">
               {product.description}
@@ -102,7 +116,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           <div className="flex flex-col items-start gap-4 border-t border-[var(--color-divider)] pt-8">
             <p className="text-[14px] text-[var(--color-text-secondary)]">
-              Хочете розібрати, як {product.title} ляже на ваші процеси?
+              Розкажіть про вашу задачу, і ми підкажемо, з чого почати.
             </p>
             <Button asChild variant="primary">
               <Link href={navigationCta.href}>{navigationCta.label}</Link>
