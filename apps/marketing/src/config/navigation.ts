@@ -36,17 +36,11 @@ export const productNavItems: ProductNavItem[] = products;
 export const primaryNavLinks: PrimaryNavLink[] = [{ label: "Кейси", href: "/work" }];
 
 export const navigationCta: PrimaryNavLink = {
-  label: "Обговорити систему",
+  label: "Обговорити задачу",
   href: "/contact",
 };
 
-/**
- * Secondary CTA — added in the Redesign pass to fix a standing copy
- * drift: Hero previously said "Дивитись рішення", Process said
- * "Подивитись рішення" — two hand-typed variants of the same intent.
- * Both now import this one object.
- */
 export const secondaryCta: PrimaryNavLink = {
-  label: "Подивитися продукт",
+  label: "Переглянути послуги",
   href: "/product",
 };
