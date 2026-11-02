@@ -22,7 +22,7 @@ export function Hero() {
     <section aria-labelledby={HEADLINE_ID} className="overflow-hidden py-16 sm:py-24">
       <Container className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10">
         <div className="flex flex-col items-start gap-6">
-          <HeroEyebrow>Продуктова інженерна компанія</HeroEyebrow>
+          <HeroEyebrow>Консалтинг і автоматизація бізнесу</HeroEyebrow>
           <HeroHeadline id={HEADLINE_ID} />
           <HeroSupportingCopy />
           <HeroCtaGroup />
