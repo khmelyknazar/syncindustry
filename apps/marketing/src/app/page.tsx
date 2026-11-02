@@ -6,6 +6,14 @@ import { Solutions } from "@/features/solutions/solutions";
 import { CaseStudyPreviewSection } from "@/features/trust-system/case-study-preview-section";
 import { DocumentationTransparencySection } from "@/features/trust-system/documentation-transparency-section";
 import { TrustCtaSection } from "@/features/trust-system/trust-cta-section";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Консалтинг і автоматизація бізнес-процесів",
+  description:
+    "Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію та AI-рішення: менше ручної роботи, більше контролю.",
+  path: "/",
+});
 
 /**
  * Home funnel, in order — see the chat response for the full
