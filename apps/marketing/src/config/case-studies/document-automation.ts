@@ -18,7 +18,7 @@ export const documentAutomationCaseStudy: CaseStudy = {
   title: "Автоматична обробка документів через Telegram-бота",
   summary:
     "Документи надсилаються в Telegram, система розпізнає їхній вміст і записує структуровані дані в базу: без ручного внесення.",
-  type: "internal",
+  type: "demo",
   featured: true,
   technology: [
     "Telegram",
