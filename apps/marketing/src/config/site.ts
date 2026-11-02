@@ -9,7 +9,7 @@ export const siteConfig = {
     "Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію та AI-рішення: менше ручної роботи, більше контролю.",
   // Постав сюди ОСНОВНИЙ домен з Vercel (з www або без)
   // і налаштуй редірект з іншого.
-  url: "www.syncindustry.com",
+  url: "https://www.syncindustry.com",
   ogImage: "/opengraph-image",
   locale: "uk-UA",
   contact: {
