@@ -31,4 +31,10 @@ export interface Product {
    * not a claim that every item is fully shipped (Solutions section
    * renders this list under an explicit "напрямок продукту" label). */
   capabilities?: string[];
+  /** Title для пошуку, без бренду. Якщо немає, береться `title`. */
+  seoTitle?: string;
+  /** Meta description. Якщо немає, береться `description`. */
+  seoDescription?: string;
+  /** H1 сторінки. Якщо немає, береться `title`. */
+  h1?: string;
 }
