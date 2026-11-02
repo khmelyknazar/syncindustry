@@ -34,11 +34,10 @@ export async function generateMetadata({
   }
 
   return createPageMetadata({
-    title: caseStudy.clientName ?? caseStudy.title,
+    title: caseStudy.title,
     description: caseStudy.summary,
     path: `/work/${caseStudy.slug}`,
   });
-}
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
