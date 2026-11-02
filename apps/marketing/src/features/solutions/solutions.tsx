@@ -16,9 +16,9 @@ export function Solutions() {
       <Container className="flex flex-col gap-10">
         <SectionHeading
           id={HEADING_ID}
-          eyebrow="Рішення"
-          title="Одна платформа, не набір послуг"
-          description="CRM — точка входу в екосистему. ERP, автоматизація, внутрішні системи та інтеграції розширюють той самий Core."
+          eyebrow="Послуги"
+          title="Що ми впроваджуємо у вашому бізнесі"
+          description="Спочатку розбираємо ваші процеси, потім проєктуємо й впроваджуємо CRM, автоматизацію, інтеграції та AI-рішення."
         />
         <SolutionsGrid />
       </Container>
