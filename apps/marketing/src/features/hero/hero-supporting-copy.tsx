@@ -1,7 +1,6 @@
 /**
- * v2 (Redesign): copy supplied directly in the brief. Still one
- * short paragraph, still no feature list — sells the outcome
- * (a business that runs as one system), not a technology stack.
+ * Один короткий абзац без переліку технологій: спочатку розбір
+ * процесів, потім впровадження. Містить основні послуги природною мовою.
  */
 export function HeroSupportingCopy() {
   return (
@@ -11,8 +10,8 @@ export function HeroSupportingCopy() {
         "text-[var(--color-text-secondary)]",
       ].join(" ")}
     >
-      Проєктуємо внутрішні системи, автоматизації та AI-рішення під те, як реально
-      працює ваш бізнес.
+      Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію та
+      AI-рішення: менше ручної роботи, більше контролю.
     </p>
   );
 }
