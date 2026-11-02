@@ -7,9 +7,9 @@ import { CaseStudyGrid } from "@/features/work/case-study-grid";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Кейси",
+  title: "Кейси: CRM, автоматизація та AI-рішення",
   description:
-    "Реальна робота Sync Industry — з чітким маркуванням клієнтських, демонстраційних і внутрішніх проєктів.",
+    "Приклади CRM, автоматизації та AI-рішень від Sync Industry. Клієнтські, демонстраційні та внутрішні проєкти позначені окремо.",
   path: "/work",
 });
 
