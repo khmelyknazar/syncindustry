@@ -5,9 +5,9 @@ import { ContactPageContent } from "@/features/contact/contact-page-layout";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Обговорити систему",
+  title: "Консультація щодо автоматизації бізнесу",
   description:
-    "Розкажіть, який процес чи проблему потрібно вирішити — перший контакт із Sync Industry починається з розбору контексту, не з продажу.",
+    "Розкажіть, який процес чи проблему потрібно вирішити. Перший контакт із Sync Industry починається з розбору вашої ситуації, а не з продажу.",
   path: "/contact",
 });
 
