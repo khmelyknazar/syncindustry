@@ -12,7 +12,7 @@ interface SectionDef {
  * six empty ones renders three sections, not six empty headings; this
  * is what lets a case study be published honestly before every field
  * has a confirmed answer (see the TODO comments in
- * `document-automation-n8n.ts`).
+ * `document-automation.ts`).
  */
 export function CaseStudySections({ caseStudy }: { caseStudy: CaseStudy }) {
   const sections: SectionDef[] = [];

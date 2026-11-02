@@ -1,6 +1,6 @@
 import type { CaseStudy } from "@/types/case-study";
 
-import { documentAutomationCaseStudy } from "./document-automation-n8n";
+import { documentAutomationCaseStudy } from "./document-automation";
 
 /**
  * One file per case study (this project's established pattern —
