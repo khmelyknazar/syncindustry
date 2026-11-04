@@ -1,7 +1,7 @@
 export function SolutionCapabilityList({ capabilities }: { capabilities: string[] }) {
   return (
     <div className="flex flex-col gap-2">
-      <span className="text-[11px] font-medium uppercase tracking-[0.04em] text-[var(--color-text-disabled)]">
+      <span className="text-[12px] font-medium text-[var(--color-text-disabled)]">
         Напрямок продукту
       </span>
       <ul className="flex flex-wrap gap-1.5" aria-label="Capability areas">

@@ -6,6 +6,7 @@ import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { emailContact, phoneContact, telegramContact } from "@/config/contact";
 import { navigationCta } from "@/config/navigation";
 import { FormField } from "@/features/contact/form-field";
 import type { ContactFormStatus, ContactFormValues } from "@/types/contact";
@@ -14,6 +15,7 @@ const EMPTY_VALUES: ContactFormValues = {
   name: "",
   workEmail: "",
   company: "",
+  altContact: "",
   need: "",
   context: "",
 };
@@ -30,7 +32,6 @@ function validate(values: ContactFormValues): FieldErrors {
   } else if (!EMAIL_PATTERN.test(values.workEmail)) {
     errors.workEmail = "Перевірте формат email.";
   }
-  if (!values.company.trim()) errors.company = "Вкажіть компанію.";
   if (!values.need.trim()) errors.need = "Опишіть коротко, що потрібно.";
   return errors;
 }
@@ -65,11 +66,9 @@ export function ContactForm() {
     setStatus("submitting");
 
     try {
-      // The endpoint exists (`app/api/contact/route.ts`) and validates
-      // server-side, but no delivery provider (email/Telegram/CRM) is
-      // configured yet — it honestly responds 503 until one is wired
-      // via `CONTACT_DELIVERY_WEBHOOK_URL`. That correctly lands here
-      // in the `error` branch instead of a faked success.
+      // Сервер (`app/api/contact/route.ts`) валідує дані повторно й
+      // відповідає 503, поки не задані GMAIL_USER і GMAIL_APP_PASSWORD.
+      // Це потрапляє в гілку `error` нижче, а не вдаваний успіх.
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -155,16 +154,23 @@ export function ContactForm() {
         />
       </FormField>
 
-      <FormField id="contact-company" label="Компанія" error={errors.company}>
+      <FormField id="contact-company" label="Компанія" optional>
         <Input
           id="contact-company"
           name="company"
           autoComplete="organization"
           value={values.company}
           onChange={(event) => { updateField("company", event.target.value); }}
-          onBlur={() => { handleBlur("company"); }}
-          aria-invalid={Boolean(errors.company)}
-          aria-describedby={errors.company ? "contact-company-error" : undefined}
+        />
+      </FormField>
+
+      <FormField id="contact-alt" label="Телефон або Telegram" optional>
+        <Input
+          id="contact-alt"
+          name="altContact"
+          autoComplete="off"
+          value={values.altContact}
+          onChange={(event) => { updateField("altContact", event.target.value); }}
         />
       </FormField>
 
@@ -203,7 +209,29 @@ export function ContactForm() {
         >
           <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
           <span>
-            Не вдалося надіслати форму. Спробуйте, будь ласка, ще раз трохи пізніше.
+            Не вдалося надіслати форму. Спробуйте, будь ласка, ще раз трохи пізніше або
+            зв&apos;яжіться з нами напряму:{" "}
+            <a href={phoneContact.href} className="font-medium underline">
+              {phoneContact.display}
+            </a>
+            ,{" "}
+            <a href={emailContact.href} className="font-medium underline">
+              {emailContact.display}
+            </a>
+            {telegramContact && (
+              <>
+                ,{" "}
+                <a
+                  href={telegramContact.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium underline"
+                >
+                  Telegram
+                </a>
+              </>
+            )}
+            .
           </span>
         </div>
       )}

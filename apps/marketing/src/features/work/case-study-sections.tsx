@@ -39,10 +39,10 @@ export function CaseStudySections({ caseStudy }: { caseStudy: CaseStudy }) {
     sections.push({ heading: "Підхід", content: caseStudy.approach });
   }
   if (caseStudy.architecture) {
-    sections.push({ heading: "Архітектура", content: caseStudy.architecture });
+    sections.push({ heading: "Як це влаштовано", content: caseStudy.architecture });
   }
   if (caseStudy.implementation) {
-    sections.push({ heading: "Реалізація", content: caseStudy.implementation });
+    sections.push({ heading: "Що всередині", content: caseStudy.implementation });
   }
   if (caseStudy.result?.qualitative || caseStudy.result?.metric) {
     sections.push({

@@ -37,7 +37,7 @@ export function FeaturedCaseStudy({ caseStudy }: { caseStudy: CaseStudy }) {
           {caseStudy.summary}
         </p>
 
-        <span className="inline-flex items-center gap-1 text-[14px] font-medium text-[var(--color-brand-primary)]">
+        <span className="inline-flex items-center gap-1 text-[14px] font-medium text-[var(--color-text-link)]">
           Детальніше про проєкт
           <ArrowRight
             aria-hidden="true"
@@ -49,7 +49,7 @@ export function FeaturedCaseStudy({ caseStudy }: { caseStudy: CaseStudy }) {
       <div className="flex flex-col justify-between gap-6 border-t border-[var(--color-divider)] pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
         {caseStudy.approach && (
           <div className="flex flex-col gap-1.5">
-            <span className="text-[12px] font-medium uppercase tracking-[0.04em] text-[var(--color-text-disabled)]">
+            <span className="text-[12px] font-medium text-[var(--color-text-disabled)]">
               Підхід
             </span>
             <p className="text-[13px] leading-[18px] text-[var(--color-text-secondary)]">
@@ -60,7 +60,7 @@ export function FeaturedCaseStudy({ caseStudy }: { caseStudy: CaseStudy }) {
 
         {caseStudy.result?.qualitative && (
           <div className="flex flex-col gap-1.5">
-            <span className="text-[12px] font-medium uppercase tracking-[0.04em] text-[var(--color-text-disabled)]">
+            <span className="text-[12px] font-medium text-[var(--color-text-disabled)]">
               Результат
             </span>
             <p className="text-[13px] leading-[18px] text-[var(--color-text-secondary)]">

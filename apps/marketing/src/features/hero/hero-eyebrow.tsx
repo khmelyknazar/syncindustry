@@ -9,8 +9,8 @@ export function HeroEyebrow({ children }: { children: ReactNode }) {
   return (
     <p
       className={[
-        "text-[13px] font-medium uppercase tracking-[0.06em]",
-        "text-[var(--color-brand-primary)]",
+        "text-[14px] font-medium",
+        "text-[var(--color-text-secondary)]",
       ].join(" ")}
     >
       {children}

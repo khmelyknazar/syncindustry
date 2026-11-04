@@ -3,7 +3,6 @@ import Link from "next/link";
 
 
 import { Container } from "@/components/container";
-import { ParallaxLayer } from "@/components/parallax-layer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { navigationCta } from "@/config/navigation";
@@ -49,31 +48,11 @@ export function TrustCtaSection() {
         <ScrollReveal
           className={cn(
             "relative flex flex-col items-start gap-6 overflow-hidden rounded-[var(--radius-xl)]",
-            "border border-[var(--color-brand-primary)]/25 bg-[var(--color-bg-surface)]",
-            "p-10 shadow-[var(--glow-primary-md)] sm:p-16",
+            "border border-[var(--color-border-default)] bg-[var(--color-bg-surface)]",
+            "p-10 sm:p-16",
           )}
         >
-          <ParallaxLayer strength={32} className="pointer-events-none absolute inset-0">
-            <div
-              aria-hidden="true"
-              className={cn(
-                "absolute left-1/2 top-0 size-[520px] -translate-x-1/2 -translate-y-1/3 rounded-full",
-                "bg-[var(--ultramarine-500)]/14 blur-[100px]",
-              )}
-            />
-            <div
-              aria-hidden="true"
-              style={{
-                backgroundImage:
-                  "linear-gradient(var(--color-border-default) 1px, transparent 1px), linear-gradient(90deg, var(--color-border-default) 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-                maskImage: "radial-gradient(ellipse at center, black, transparent 70%)",
-              }}
-              className="absolute inset-0 opacity-20"
-            />
-          </ParallaxLayer>
-
-          <div className="relative z-10 flex flex-col items-start gap-6">
+          <div className="flex flex-col items-start gap-6">
             <h2
               id={HEADING_ID}
               className="max-w-[560px] text-[length:var(--font-heading-lg-size)] leading-[var(--font-heading-lg-line)] font-semibold tracking-[-0.01em] text-[var(--color-text-primary)]"

@@ -40,7 +40,7 @@ export function CaseStudyPreviewSection() {
           {hasCaseStudies && (
             <Link
               href="/work"
-              className="text-[14px] font-medium text-[var(--color-brand-primary)] hover:underline"
+              className="text-[14px] font-medium text-[var(--color-text-link)] hover:underline"
             >
               Усі кейси
             </Link>

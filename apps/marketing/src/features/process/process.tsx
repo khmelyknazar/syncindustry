@@ -1,6 +1,5 @@
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
-import { ProcessCta } from "@/features/process/process-cta";
 import { ProcessFlow } from "@/features/process/process-flow";
 
 const HEADING_ID = "process-heading";
@@ -20,10 +19,9 @@ export function Process() {
           id={HEADING_ID}
           eyebrow="Процес"
           title="Що відбувається, коли ви приходите в Sync Industry"
-          description="Шість стадій. Кожна — з конкретним результатом і критерієм переходу до наступної."
+          description="Шість кроків від першої розмови до працюючої системи. Кожен — із зрозумілим результатом."
         />
         <ProcessFlow />
-        <ProcessCta />
       </Container>
     </section>
   );

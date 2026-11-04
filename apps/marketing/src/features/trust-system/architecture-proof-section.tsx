@@ -35,9 +35,9 @@ export function ArchitectureProofSection() {
       <Container className="flex flex-col gap-10">
         <SectionHeading
           id={HEADING_ID}
-          eyebrow="На чому це побудовано"
-          title="Технологічний стек і причини вибору"
-          description="Кожен вибір — з конкретною причиною, а не за замовчуванням."
+          eyebrow="Для технічних фахівців"
+          title="Технології, на яких ми будуємо"
+          description="Якщо вам чи вашому технічному директору важливі деталі: що саме ми використовуємо і чому."
         />
         <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-border-default)] bg-[var(--color-divider)] sm:grid-cols-2">
           {techStack.map((item) => (

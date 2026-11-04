@@ -33,3 +33,14 @@ export interface DocLink {
   href: Route;
   icon: LucideIcon;
 }
+/**
+ * Підтверджена кваліфікація: сертифікат, курс, членство. `href` (необов'язково) —
+ * посилання на сторінку, де кожен може перевірити автентичність
+ * (Credly, Google Skills, сайт видавця тощо).
+ */
+export interface Certificate {
+  title: string;
+  issuer: string;
+  year?: number;
+  href?: string;
+}

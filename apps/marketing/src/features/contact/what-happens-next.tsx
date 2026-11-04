@@ -9,7 +9,7 @@ export function WhatHappensNext() {
       <ol className="flex flex-col gap-3">
         {whatHappensNextSteps.map((step, index) => (
           <li key={step} className="flex items-start gap-3">
-            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[var(--ultramarine-500)]/15 font-mono text-[11px] text-[var(--color-brand-primary)]">
+            <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[var(--ultramarine-500)]/15 font-mono text-[11px] text-[var(--color-text-link)]">
               {index + 1}
             </span>
             <span className="text-[14px] leading-[20px] text-[var(--color-text-secondary)]">

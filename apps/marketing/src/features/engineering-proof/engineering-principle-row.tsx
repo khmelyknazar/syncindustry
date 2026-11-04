@@ -1,11 +1,10 @@
-import { EngineeringNotation } from "@/features/engineering-proof/engineering-notation";
 import type { EngineeringPrincipleProof } from "@/types/engineering-proof";
 
 /**
  * Editorial row, not a card — no border/bg/shadow wrapper around the
  * whole item, only a top divider between rows. Left column: number +
  * statement (the "big label" the brief asks for). Right: explanation,
- * business consequence, optional notation. Deliberately not the
+ * business consequence. Deliberately not the
  * connector-rail/dot pattern used in Hero and Process — a different
  * visual construction so this doesn't read as a repeat of either.
  */
@@ -29,10 +28,9 @@ export function EngineeringPrincipleRow({
         <p className="max-w-[560px] text-[15px] leading-[22px] text-[var(--color-text-secondary)]">
           {principle.explanation}
         </p>
-        <p className="text-[13px] font-medium text-[var(--color-brand-primary)]">
+        <p className="text-[13px] font-medium text-[var(--color-text-link)]">
           {principle.businessConsequence}
         </p>
-        {principle.notation && <EngineeringNotation lines={principle.notation} />}
       </div>
     </div>
   );

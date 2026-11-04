@@ -14,9 +14,9 @@ import { PrincipleList } from "@/features/trust-system/principle-list";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Інженерія",
+  title: "Як ми працюємо",
   description:
-    "Архітектурний підхід Sync Industry: принципи проєктування, технологічний стек, accessibility та шлях від CRM до бізнес-інфраструктури.",
+    "Як Sync Industry проєктує системи для бізнесу: принципи роботи, технології, надійність і шлях від CRM до єдиної системи керування бізнесом.",
   path: "/company/engineering",
 });
 
@@ -32,9 +32,10 @@ export const metadata: Metadata = createPageMetadata({
  *   documented then as belonging here).
  * - Accessibility/performance → `PrincipleList` (Trust System's
  *   existing renderer) with new, page-specific, verifiable content.
- * - Design System / Scalability / CRM evolution → prose only, no new
- *   visual components — these are explanatory sections, not proof
- *   mechanisms that need their own component.
+ * - Scalability → prose only, no new visual components.
+ *
+ * Тексти — простою мовою для власника бізнесу; технічні деталі
+ * зібрані в окремому блоці «Для технічних фахівців».
  */
 export default function EngineeringPage() {
   return (
@@ -42,23 +43,23 @@ export default function EngineeringPage() {
       <div className="py-16 sm:py-24">
         <Container className="flex flex-col gap-20">
           <header className="flex max-w-[640px] flex-col gap-4">
-            <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-[var(--color-brand-primary)]">
-              Інженерія
+            <p className="text-[14px] font-medium text-[var(--color-text-secondary)]">
+              Як ми працюємо
             </p>
             <h1 className="text-[length:var(--font-display-md-size)] leading-[var(--font-display-md-line)] font-semibold tracking-[-0.02em] text-[var(--color-text-primary)]">
               Як ми проєктуємо системи, а не сайти
             </h1>
             <p className="text-[length:var(--font-body-lg-size)] leading-[var(--font-body-lg-line)] text-[var(--color-text-secondary)]">
-              Ця сторінка описує реальний архітектурний підхід Sync Industry — без
-              сертифікацій, метрик чи клієнтських лого, яких у нас поки немає.
+              Тут ми чесно описуємо, як проєктуємо системи, — без сертифікацій,
+              метрик чи клієнтських логотипів, яких у нас поки немає.
             </p>
           </header>
 
           <section aria-labelledby="architecture-philosophy-heading" className="flex flex-col gap-8">
             <SectionHeading
               id="architecture-philosophy-heading"
-              eyebrow="Філософія архітектури"
-              title="Чотири принципи, які визначають кожне рішення"
+              eyebrow="Принципи"
+              title="Чотири принципи, які визначають кожне наше рішення"
             />
             <div>
               {engineeringProofPrinciples.map((principle) => (
@@ -67,34 +68,18 @@ export default function EngineeringPage() {
             </div>
           </section>
 
-          <section aria-labelledby="design-system-heading" className="flex flex-col gap-4">
-            <SectionHeading
-              id="design-system-heading"
-              eyebrow="Design System"
-              title="Один набір токенів, уся екосистема"
-            />
-            <p className="max-w-[680px] text-[15px] leading-[24px] text-[var(--color-text-secondary)]">
-              Кольори, типографіка, spacing, radius і motion визначені один раз як
-              CSS-токени й використовуються без винятків — від цього тексту до кожної
-              кнопки на сайті. Немає окремої «дизайн-системи для маркетингу» і
-              «дизайн-системи для продукту»: щільність компонування відрізняється між
-              поверхнями, токени — ні.
-            </p>
-          </section>
-
           <section aria-labelledby="scalability-heading" className="flex flex-col gap-4">
             <SectionHeading
               id="scalability-heading"
-              eyebrow="Масштабованість"
-              title="Один Core, уся екосистема продуктів"
+              eyebrow="Масштабування"
+              title="Одна основа для всіх модулів"
             />
             <p className="max-w-[680px] text-[15px] leading-[24px] text-[var(--color-text-secondary)]">
-              Архітектура побудована навколо одного спільного Core (ідентичність,
-              дані, права доступу) і продуктових поверхонь над ним. CRM, ERP,
-              Business Automation, Internal Systems та Integrations — розширення
-              того самого Core, а не окремі системи: спільний логін, спільні дані,
-              без переписування того, що вже працює, коли підключається новий
-              продукт.
+              Усе будується навколо однієї спільної основи: вхід у систему, дані
+              та права доступу. CRM, облік (ERP), автоматизація, внутрішні
+              системи та підключення до сервісів — це розширення однієї
+              системи, а не окремі програми. Один логін, спільні дані, і нічого
+              не переписується з нуля, коли додається новий модуль.
             </p>
           </section>
 
@@ -103,8 +88,8 @@ export default function EngineeringPage() {
           <section aria-labelledby="accessibility-performance-heading" className="flex flex-col gap-8">
             <SectionHeading
               id="accessibility-performance-heading"
-              eyebrow="Accessibility та Performance"
-              title="Перевірювані практики, не обіцянки"
+              eyebrow="Доступність і швидкість"
+              title="Те, що можна перевірити, а не просто пообіцяти"
             />
             <PrincipleList items={engineeringPagePractices} />
           </section>

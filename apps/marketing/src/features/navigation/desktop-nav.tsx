@@ -23,7 +23,7 @@ export function DesktopNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Продукти</NavigationMenuTrigger>
+            <NavigationMenuTrigger>Послуги</NavigationMenuTrigger>
             <NavigationMenuContent className="md:w-[560px] md:max-w-[90vw]">
               <ProductsMenu />
             </NavigationMenuContent>

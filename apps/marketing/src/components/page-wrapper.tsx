@@ -2,7 +2,7 @@
 
 import { pageTransitionVariants } from "@axioma/design-system/motion";
 import { m } from "motion/react";
-import type { PropsWithChildren } from "react";
+import { useEffect, useState, type PropsWithChildren } from "react";
 
 
 import { useReducedMotionVariants } from "@/hooks/use-reduced-motion";
@@ -23,13 +23,25 @@ import { useReducedMotionVariants } from "@/hooks/use-reduced-motion";
  * future `(marketing)/layout.tsx`) — individual pages never re-wrap
  * their content in another PageWrapper.
  */
+/**
+ * Перший показ сторінки (серверний HTML і гідрація) рендериться вже
+ * видимим: початкова `opacity: 0` затримувала б LCP і давала б
+ * порожній екран, поки не завантажиться JS. Анімація переходу
+ * граває лише при наступних переходах між сторінками в межах сайту.
+ */
+let hasHydrated = false;
+
 export function PageWrapper({ children }: PropsWithChildren) {
   const variants = useReducedMotionVariants(pageTransitionVariants);
+  const [isFirstPaint] = useState(() => !hasHydrated);
+  useEffect(() => {
+    hasHydrated = true;
+  }, []);
 
   return (
     <m.main
       id="main-content"
-      initial="initial"
+      initial={isFirstPaint ? false : "initial"}
       animate="animate"
       exit="exit"
       variants={variants}

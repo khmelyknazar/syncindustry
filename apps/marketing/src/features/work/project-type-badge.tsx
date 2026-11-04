@@ -24,7 +24,7 @@ export function ProjectTypeBadge({ type }: { type: CaseStudyType }) {
       className={[
         "inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-[12px] font-medium",
         isClient
-          ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-brand-primary)]"
+          ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-text-link)]"
           : "bg-[var(--warning-500)]/15 text-[var(--warning-500)]",
       ].join(" ")}
     >

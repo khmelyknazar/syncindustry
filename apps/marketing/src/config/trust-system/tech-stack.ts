@@ -9,7 +9,7 @@ import type { TechStackItem } from "@/types/trust";
 export const techStack: TechStackItem[] = [
   {
     name: "Next.js 15",
-    category: "Framework",
+    category: "Основа сайту",
     rationale: "App Router і Server Components — продуктивність без ручної оптимізації.",
   },
   {
@@ -34,7 +34,7 @@ export const techStack: TechStackItem[] = [
   },
   {
     name: "Turborepo + pnpm",
-    category: "Monorepo",
+    category: "Організація коду",
     rationale: "Кешування задач між apps і packages при частих змінах design-system.",
   },
 ];

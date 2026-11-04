@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Container } from "@/components/container";
 import { Logo } from "@/components/logo";
 import { navigationCta } from "@/config/navigation";
+import { ContactDetails } from "@/features/contact/contact-details";
 
 /**
  * Deliberately lean. The Marketing Website Specification originally
@@ -19,20 +20,19 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--color-divider)]">
-      <Container className="flex flex-col items-start justify-between gap-6 py-10 sm:flex-row sm:items-center">
-        <div className="flex flex-col gap-2">
-          <Logo />
-          <p className="text-[13px] text-[var(--color-text-disabled)]">
-            © {year} Sync Industry. Усі права захищено.
-          </p>
-        </div>
+      <Container className="flex flex-col gap-10 py-10">
+        <div className="flex flex-col justify-between gap-10 lg:flex-row">
+          <div className="flex flex-col gap-5">
+            <Logo />
+            <ContactDetails variant="footer" />
+          </div>
 
-        <nav aria-label="Футер" className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav aria-label="Футер" className="flex flex-wrap content-start gap-x-6 gap-y-2 lg:max-w-[420px] lg:justify-end">
           <Link
             href="/product"
             className="text-[13px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
           >
-            Продукт
+            Послуги
           </Link>
           <Link
             href="/work"
@@ -44,13 +44,19 @@ export function Footer() {
             href="/company/engineering"
             className="text-[13px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
           >
-            Інженерія
+            Як ми працюємо
+          </Link>
+          <Link
+            href="/company/security"
+            className="text-[13px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+          >
+            Безпека
           </Link>
           <Link
             href={navigationCta.href}
             className="text-[13px] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
           >
-            Контакт
+            Контакти
           </Link>
           <Link
             href="/legal/privacy"
@@ -65,6 +71,11 @@ export function Footer() {
             Умови
           </Link>
         </nav>
+        </div>
+
+        <p className="border-t border-[var(--color-divider)] pt-6 text-[13px] text-[var(--color-text-disabled)]">
+          © {year} Sync Industry. Усі права захищено.
+        </p>
       </Container>
     </footer>
   );

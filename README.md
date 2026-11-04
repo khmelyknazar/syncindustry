@@ -38,13 +38,10 @@ axioma/
 
 ## Етап 2 (Build Phase, Stage 1) — додано
 
-- **`robots.ts` / `sitemap.ts`** — Next.js metadata-route conventions замість статичних файлів у `public/`; `sitemap.ts` навмисно містить лише `/`, бо реальних сторінок ще немає (буде розширюватись разом із Marketing Website Specification §1).
+- **`robots.ts` / `sitemap.ts`** — Next.js metadata-route conventions замість статичних файлів у `public/`; `sitemap.ts` містить лише сторінки, які мають бути в індексі: головну, розділи, доступні сторінки послуг і кейси (сторінки зі статусом «скоро» не потрапляють).
 - **`icon.tsx` / `apple-icon.tsx`** — favicon згенерований кодом (next/og `ImageResponse`) з тим самим `--ultramarine-500`, що і решта системи, а не статичний PNG, який може розійтись із токеном після наступної зміни палітри.
 - **`src/lib/seo.ts` (`createPageMetadata`)** — App Router не має runtime "SEO provider"-компонента (метадані — build/request-time API, не частина дерева рендеру); ця функція — функціональний еквівалент: єдине місце, де кожна майбутня сторінка отримує canonical URL, OG/Twitter payload і robots-директиви консистентно.
 - **`MotionProvider`** — `LazyMotion(domAnimation)` для розміру бандла + `MotionConfig reducedMotion="user"` як глобальна страховка для reduced-motion, поверх ручного `useReducedMotionVariants` для компонентів із кастомними варіантами.
 - **`Container`** — єдина точка, де Grid-правила Design System §7 перетворюються на код (`size: default|narrow|full`), а не hardcoded max-width у кожній секції.
 - **`PageWrapper`** — `<main id="main-content">` (ціль `SkipLink`) + page-transition анімація з Design System §8.3; підключається на рівні layout route-групи (наприклад майбутній `(marketing)/layout.tsx`), не в кожній сторінці окремо.
 - **`SkipLink`** — WCAG 2.1 AA (2.4.1 Bypass Blocks), перший фокусований елемент документа.
-
-Очікую підтвердження.
-

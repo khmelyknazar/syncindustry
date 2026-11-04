@@ -10,9 +10,7 @@ export interface ProcessStage {
   index: number;
   /** Zero-padded stage number as shown, e.g. "01". */
   code: string;
-  /** Deliberately kept in English per the brief (Understand, Architect,
-   * Build, Integrate, Operate, Scale) — the pipeline-stage naming, not
-   * translated marketing copy. */
+  /** Назва кроку українською, зрозуміла без технічних знань. */
   title: string;
   description: string;
   businessGoal: string;
@@ -21,4 +19,7 @@ export interface ProcessStage {
   /** Omitted only for the final stage — Scale has no "next stage" to
    * gate; it restarts the cycle for the next module instead. */
   transitionCriterion?: string;
+  /** Нижній рядок картки останнього кроку замість критерію переходу:
+   * картка лишається такою ж за будовою, як і решта п'ять. */
+  cycleNote?: string;
 }

@@ -11,6 +11,8 @@ import type { ProductStatus } from "@/types/product";
  */
 export function SolutionStatus({ status }: { status: ProductStatus }) {
   const isAvailable = status === "available";
+  // Усе доступне — бейдж нічого не повідомляє. Показуємо лише «Скоро».
+  if (isAvailable) return null;
   const Icon = isAvailable ? CheckCircle2 : Clock;
 
   return (
@@ -18,7 +20,7 @@ export function SolutionStatus({ status }: { status: ProductStatus }) {
       className={[
         "inline-flex items-center gap-1.5 rounded-[var(--radius-sm)] px-2 py-1 text-[12px] font-medium",
         isAvailable
-          ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-brand-primary)]"
+          ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-text-link)]"
           : "bg-[var(--graphite-700)] text-[var(--color-text-secondary)]",
       ].join(" ")}
     >

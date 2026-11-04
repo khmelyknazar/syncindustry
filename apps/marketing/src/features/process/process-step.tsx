@@ -3,7 +3,7 @@ import type { ProcessStage } from "@/types/process";
 
 export function ProcessStep({ stage, isLast }: { stage: ProcessStage; isLast: boolean }) {
   return (
-    <div className="flex gap-4 lg:flex-col lg:gap-0">
+    <div className="flex gap-4 lg:w-full lg:flex-col lg:gap-0">
       {/* Connector rail — vertical, mobile/tablet only (below `lg`,
           where stages stack). The `lg` grid composition (see
           ProcessFlow) intentionally drops the connector line: a
@@ -14,7 +14,7 @@ export function ProcessStep({ stage, isLast }: { stage: ProcessStage; isLast: bo
         {!isLast && <span className="w-px flex-1 bg-[var(--color-border-strong)]" />}
       </div>
 
-      <div className="mb-6 flex flex-1 flex-col gap-3 rounded-[var(--radius-lg)] border border-[var(--color-border-default)] bg-[var(--color-bg-surface)] p-5 transition-colors duration-[var(--motion-instant)] ease-[var(--ease-standard)] hover:border-[var(--color-border-strong)] lg:mb-0 lg:h-full">
+      <div className="mb-6 flex flex-1 flex-col gap-3 rounded-[var(--radius-lg)] border border-[var(--color-border-default)] bg-[var(--color-bg-surface)] p-5 transition-colors duration-[var(--motion-instant)] ease-[var(--ease-standard)] hover:border-[var(--color-border-strong)] lg:mb-0 lg:flex-1">
         <div className="flex items-baseline gap-2">
           <span className="font-mono text-[13px] text-[var(--color-text-disabled)]">
             {stage.code}
@@ -30,14 +30,14 @@ export function ProcessStep({ stage, isLast }: { stage: ProcessStage; isLast: bo
 
         <dl className="flex flex-col gap-2 text-[12px] leading-[17px]">
           <div className="flex flex-col gap-0.5">
-            <dt className="font-medium uppercase tracking-[0.03em] text-[var(--color-text-disabled)]">
-              Бізнес-мета
+            <dt className="font-medium text-[var(--color-text-disabled)]">
+              Навіщо це
             </dt>
             <dd className="text-[var(--color-text-secondary)]">{stage.businessGoal}</dd>
           </div>
           <div className="flex flex-col gap-0.5">
-            <dt className="font-medium uppercase tracking-[0.03em] text-[var(--color-text-disabled)]">
-              Результат етапу
+            <dt className="font-medium text-[var(--color-text-disabled)]">
+              Що буде в результаті
             </dt>
             <dd className="text-[var(--color-text-secondary)]">{stage.stageResult}</dd>
           </div>
@@ -45,12 +45,18 @@ export function ProcessStep({ stage, isLast }: { stage: ProcessStage; isLast: bo
 
         <ProcessDeliverable>{stage.clientReceives}</ProcessDeliverable>
 
-        {stage.transitionCriterion && (
+        {(stage.transitionCriterion ?? stage.cycleNote) && (
           <p className="mt-auto border-t border-[var(--color-divider)] pt-3 text-[12px] leading-[17px] text-[var(--color-text-secondary)]">
-            <span className="font-medium text-[var(--color-text-primary)]">
-              Критерій переходу далі:
-            </span>{" "}
-            {stage.transitionCriterion}
+            {stage.transitionCriterion ? (
+              <>
+                <span className="font-medium text-[var(--color-text-primary)]">
+                  Коли переходимо далі:
+                </span>{" "}
+                {stage.transitionCriterion}
+              </>
+            ) : (
+              stage.cycleNote
+            )}
           </p>
         )}
       </div>

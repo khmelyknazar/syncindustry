@@ -21,7 +21,7 @@ export function PrincipleList({ items }: { items: PrincipleItem[] }) {
         <ScrollStaggerItem
           key={title}
           as="li"
-          className="flex flex-col gap-3 rounded-[var(--card-radius)] border border-[var(--card-border)] bg-[var(--card-bg)] p-6"
+          className="flex flex-col gap-3 rounded-[var(--card-radius)] border border-[var(--card-border)] bg-[var(--card-bg)] p-6 sm:last:odd:col-span-2"
         >
           <span
             aria-hidden="true"

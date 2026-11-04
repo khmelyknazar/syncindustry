@@ -9,7 +9,8 @@ export const siteConfig = {
     "Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію та AI-рішення: менше ручної роботи, більше контролю.",
   // Постав сюди ОСНОВНИЙ домен з Vercel (з www або без)
   // і налаштуй редірект з іншого.
-  url: "https://www.syncindustry.com",
+  // Можна перевизначити змінною NEXT_PUBLIC_SITE_URL без правки коду.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.syncindustry.com",
   ogImage: "/opengraph-image",
   locale: "uk-UA",
   contact: {

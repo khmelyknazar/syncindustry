@@ -21,10 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  // TODO: відфільтрувати продукти зі статусом "скоро" після перегляду config/products.ts
-  const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
-    url: abs(`/product/${product.slug}`),
-  }));
+  // Сторінки зі статусом "скоро" закриті від індексу (див. сторінку
+  // продукту), тож у sitemap їх немає: інакше він суперечив би robots.
+  const productEntries: MetadataRoute.Sitemap = products
+    .filter((product) => product.status === "available")
+    .map((product) => ({ url: abs(`/product/${product.slug}`) }));
 
   return [
     { url: abs("/") },
@@ -33,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: abs("/work") },
     ...caseStudyEntries,
     { url: abs("/company/engineering") },
+    { url: abs("/company/security") },
     { url: abs("/contact") },
   ];
 }

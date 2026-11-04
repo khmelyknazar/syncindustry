@@ -1,11 +1,12 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { phoneContact } from "@/config/contact";
 import { navigationCta, primaryNavLinks } from "@/config/navigation";
 import { ProductsMenu } from "@/features/navigation/products-menu";
 
@@ -31,11 +32,11 @@ export function MobileNav() {
           <section aria-labelledby="mobile-nav-products-heading" className="flex flex-col gap-3">
             <h2
               id="mobile-nav-products-heading"
-              className="text-[13px] font-medium uppercase tracking-[0.02em] text-[var(--color-text-secondary)]"
+              className="text-[13px] font-medium text-[var(--color-text-secondary)]"
             >
-              Продукти
+              Послуги
             </h2>
-            <ProductsMenu />
+            <ProductsMenu onNavigate={() => { setOpen(false); }} />
           </section>
 
           <ul className="flex flex-col gap-1 border-t border-[var(--color-divider)] pt-4">
@@ -58,6 +59,12 @@ export function MobileNav() {
             <Link href={navigationCta.href} onClick={() => { setOpen(false); }}>
               {navigationCta.label}
             </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <a href={phoneContact.href} onClick={() => { setOpen(false); }}>
+              <Phone aria-hidden="true" className="size-4" strokeWidth={1.75} />
+              Зателефонувати
+            </a>
           </Button>
         </div>
       </SheetContent>

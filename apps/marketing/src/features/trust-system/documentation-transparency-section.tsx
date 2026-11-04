@@ -1,7 +1,9 @@
+import { Award, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { Container } from "@/components/container";
 import { SectionHeading } from "@/components/section-heading";
+import { certificates } from "@/config/trust-system/certificates";
 import { documentationLinks } from "@/config/trust-system/documentation-links";
 
 const HEADING_ID = "documentation-heading";
@@ -41,7 +43,7 @@ export function DocumentationTransparencySection() {
           title="Перевірте самі"
           description="Не просимо повірити на слово — ось що можна прочитати напряму."
         />
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
           {documentationLinks.map(({ title, description, href, icon: Icon }) => (
             <li key={href}>
               <Link
@@ -71,6 +73,47 @@ export function DocumentationTransparencySection() {
             </li>
           ))}
         </ul>
+
+        {certificates.length > 0 && (
+          <div className="flex flex-col gap-4 border-t border-[var(--color-divider)] pt-8">
+            <h3 className="text-[18px] font-semibold text-[var(--color-text-primary)]">
+              Сертифікати
+            </h3>
+            <ul className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
+              {certificates.map(({ title, issuer, year, href }) => (
+                <li
+                  key={title}
+                  className="flex flex-col gap-3 rounded-[var(--card-radius)] border border-[var(--card-border)] bg-[var(--card-bg)] p-6"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="flex size-9 items-center justify-center rounded-[var(--radius-md)] bg-[var(--graphite-700)] text-[var(--color-text-secondary)]"
+                  >
+                    <Award className="size-5" strokeWidth={1.5} />
+                  </span>
+                  <span className="text-[14px] font-medium text-[var(--color-text-primary)]">
+                    {title}
+                  </span>
+                  <span className="text-[13px] leading-[18px] text-[var(--color-text-secondary)]">
+                    {issuer}
+                    {year ? `, ${String(year)}` : ""}
+                  </span>
+                  {href && (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto inline-flex items-center gap-1 text-[13px] font-medium text-[var(--color-text-link)] hover:underline"
+                    >
+                      Перевірити
+                      <ArrowUpRight aria-hidden="true" className="size-3.5" />
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </Container>
     </section>
   );

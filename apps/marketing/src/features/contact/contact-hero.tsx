@@ -3,7 +3,7 @@ const HEADLINE_ID = "contact-heading";
 export function ContactHero() {
   return (
     <div className="flex flex-col gap-4">
-      <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-[var(--color-brand-primary)]">
+      <p className="text-[14px] font-medium text-[var(--color-text-secondary)]">
         Почати розмову
       </p>
       <h1

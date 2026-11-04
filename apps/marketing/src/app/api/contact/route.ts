@@ -10,8 +10,9 @@ import nodemailer from "nodemailer";
 interface ContactPayload {
   name: string;
   workEmail: string;
-  company: string;
+  company?: string | undefined;
   need: string;
+  altContact?: string | undefined;
   context?: string | undefined;
 }
 
@@ -42,6 +43,7 @@ function validatePayload(body: unknown): ValidationResult {
   const workEmail = typeof record.workEmail === "string" ? record.workEmail.trim() : "";
   const company = typeof record.company === "string" ? record.company.trim() : "";
   const need = typeof record.need === "string" ? record.need.trim() : "";
+  const altContact = typeof record.altContact === "string" ? record.altContact.trim() : "";
   const rawContext = typeof record.context === "string" ? record.context.trim() : "";
 
   if (!name) errors.push("name is required");
@@ -51,8 +53,8 @@ function validatePayload(body: unknown): ValidationResult {
   else if (!EMAIL_PATTERN.test(workEmail)) errors.push("workEmail is not a valid email");
   else if (workEmail.length > MAX_SHORT_FIELD_LENGTH) errors.push("workEmail is too long");
 
-  if (!company) errors.push("company is required");
-  else if (company.length > MAX_SHORT_FIELD_LENGTH) errors.push("company is too long");
+  if (company.length > MAX_SHORT_FIELD_LENGTH) errors.push("company is too long");
+  if (altContact.length > MAX_SHORT_FIELD_LENGTH) errors.push("altContact is too long");
 
   if (!need) errors.push("need is required");
   else if (need.length > MAX_LONG_FIELD_LENGTH) errors.push("need is too long");
@@ -63,7 +65,14 @@ function validatePayload(body: unknown): ValidationResult {
 
   return {
     valid: true,
-    data: { name, workEmail, company, need, context: rawContext || undefined },
+    data: {
+      name,
+      workEmail,
+      company: company || undefined,
+      need,
+      altContact: altContact || undefined,
+      context: rawContext || undefined,
+    },
   };
 }
 
@@ -106,11 +115,12 @@ async function deliverContactRequest(data: ContactPayload): Promise<boolean> {
       from: `"Sync Industry — сайт" <${user}>`,
       to: user,
       replyTo: data.workEmail,
-      subject: `Нова заявка з сайту: ${data.company}`,
+      subject: `Нова заявка з сайту: ${data.company ?? data.name}`,
       text: [
         `Ім'я: ${data.name}`,
         `Email: ${data.workEmail}`,
-        `Компанія: ${data.company}`,
+        data.company ? `Компанія: ${data.company}` : null,
+        data.altContact ? `Телефон/Telegram: ${data.altContact}` : null,
         `Що потрібно: ${data.need}`,
         data.context ? `Контекст: ${data.context}` : null,
       ]
@@ -119,7 +129,8 @@ async function deliverContactRequest(data: ContactPayload): Promise<boolean> {
       html: `
         <p><strong>Ім'я:</strong> ${escapeHtml(data.name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(data.workEmail)}</p>
-        <p><strong>Компанія:</strong> ${escapeHtml(data.company)}</p>
+        ${data.company ? `<p><strong>Компанія:</strong> ${escapeHtml(data.company)}</p>` : ""}
+        ${data.altContact ? `<p><strong>Телефон/Telegram:</strong> ${escapeHtml(data.altContact)}</p>` : ""}
         <p><strong>Що потрібно:</strong> ${escapeHtml(data.need)}</p>
         ${data.context ? `<p><strong>Контекст:</strong> ${escapeHtml(data.context)}</p>` : ""}
       `,

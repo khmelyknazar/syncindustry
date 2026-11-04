@@ -3,37 +3,33 @@ import { CheckCircle2, Eye, Gauge, PauseCircle } from "lucide-react";
 import type { PrincipleItem } from "@/types/trust";
 
 /**
- * Real, verifiable practices used in this codebase — not a generic
- * accessibility checklist. Each line is checkable against the site
- * itself (this page included), consistent with the rest of the
- * Trust System's "reusable renderer, sourced content" pattern —
- * reuses `PrincipleItem` (already defined for Engineering/Security
- * principles) rather than a new type for the same icon+title+
- * description shape.
+ * Real, verifiable practices used in this codebase, described in
+ * plain language. Each line is checkable against the site itself
+ * (this page included).
  */
 export const engineeringPagePractices: PrincipleItem[] = [
   {
     icon: Eye,
-    title: "Видимий фокус скрізь",
+    title: "Зручно користуватися з клавіатури",
     description:
-      "Кожен інтерактивний елемент має focus-visible контур — жодного outline: none без заміни.",
+      "Кожну кнопку й посилання видно під час вибору, тож сайтом можна керувати без миші.",
   },
   {
     icon: CheckCircle2,
-    title: "WCAG AA за замовчуванням",
+    title: "Читабельно для всіх",
     description:
-      "Контраст, семантична розмітка й коректна ієрархія заголовків — частина кожного компонента, не пізніший аудит.",
+      "Контрастні кольори, зрозуміла структура сторінок і заголовків — це частина кожного елемента, а не пізня перевірка.",
   },
   {
     icon: Gauge,
-    title: "Server Components за замовчуванням",
+    title: "Швидке завантаження",
     description:
-      "JavaScript на клієнті — лише там, де є реальна інтерактивність: форма, drawer, scroll-стан хедера.",
+      "Додаткові скрипти підвантажуються лише там, де потрібна інтерактивність: у формі, меню чи під час прокрутки.",
   },
   {
     icon: PauseCircle,
-    title: "prefers-reduced-motion підтримується всюди",
+    title: "Повага до налаштувань людини",
     description:
-      "Анімація вимикається повністю для користувачів, які обрали менше руху, — не лише сповільнюється.",
+      "Якщо у вашому пристрої вимкнено анімацію, сайт повністю її прибирає, а не просто сповільнює.",
   },
 ];

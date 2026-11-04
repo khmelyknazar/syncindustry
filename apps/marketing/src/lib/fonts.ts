@@ -12,7 +12,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
  * font-family name directly in components.
  */
 export const fontSans = Inter({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic", "cyrillic-ext"],
   variable: "--font-inter",
   display: "swap",
   weight: ["400", "500", "600"],

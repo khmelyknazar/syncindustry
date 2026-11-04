@@ -9,9 +9,9 @@ import { TrustCtaSection } from "@/features/trust-system/trust-cta-section";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Консалтинг і автоматизація бізнес-процесів",
+  title: "Розробка CRM та автоматизація бізнес-процесів",
   description:
-    "Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію та AI-рішення: менше ручної роботи, більше контролю.",
+    "Розбираємо, як працює ваш бізнес, і впроваджуємо CRM, автоматизацію бізнес-процесів та AI-рішення: менше ручної роботи, більше контролю.",
   path: "/",
 });
 

@@ -22,7 +22,7 @@ export default function ProductIndexPage() {
       <div className="py-16 sm:py-24">
         <Container className="flex flex-col gap-16">
           <header className="flex max-w-[640px] flex-col gap-4">
-            <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-[var(--color-brand-primary)]">
+            <p className="text-[14px] font-medium text-[var(--color-text-secondary)]">
               Послуги
             </p>
             <h1 className="text-[length:var(--font-display-md-size)] leading-[var(--font-display-md-line)] font-semibold tracking-[-0.02em] text-[var(--color-text-primary)]">

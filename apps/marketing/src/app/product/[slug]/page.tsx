@@ -68,8 +68,39 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         }
       : null;
 
+  const breadcrumbJsonLd =
+    product.status === "available"
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Головна", item: siteConfig.url },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Послуги",
+              item: new URL("/product", siteConfig.url).toString(),
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: product.title,
+              item: new URL(`/product/${product.slug}`, siteConfig.url).toString(),
+            },
+          ],
+        }
+      : null;
+
   return (
     <PageWrapper>
+      {breadcrumbJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       {serviceJsonLd && (
         <script
           type="application/ld+json"
@@ -92,7 +123,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           {product.businessProblem && (
             <div className="flex flex-col gap-1.5 border-t border-[var(--color-divider)] pt-6">
-              <span className="text-[11px] font-medium uppercase tracking-[0.04em] text-[var(--color-text-disabled)]">
+              <span className="text-[12px] font-medium text-[var(--color-text-disabled)]">
                 Проблема, яку вирішує
               </span>
               <p className="max-w-[560px] text-[15px] leading-[24px] text-[var(--color-text-secondary)]">
@@ -105,7 +136,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           {product.ecosystemRole && (
             <div className="flex flex-col gap-1.5 border-t border-[var(--color-divider)] pt-6">
-              <span className="text-[11px] font-medium uppercase tracking-[0.04em] text-[var(--color-text-disabled)]">
+              <span className="text-[12px] font-medium text-[var(--color-text-disabled)]">
                 Роль в екосистемі
               </span>
               <p className="max-w-[560px] text-[15px] leading-[24px] text-[var(--color-text-secondary)]">

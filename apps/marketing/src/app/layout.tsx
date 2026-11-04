@@ -26,17 +26,38 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image" },
+  // Код підтвердження Google Search Console береться з змінної
+  // середовища; поки її немає, мета-тег не виводиться.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "ProfessionalService"],
   name: siteConfig.name,
+  inLanguage: "uk",
   url: siteConfig.url,
   description: siteConfig.tagline,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phone,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: siteConfig.contact.phone,
+    email: siteConfig.contact.email,
+    availableLanguage: ["uk"],
+  },
   sameAs: siteConfig.social,
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  inLanguage: "uk",
 };
 
 /**
@@ -55,6 +76,15 @@ export default function RootLayout({
             __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <ThemeProvider>
           <MotionProvider>
             <SkipLink />

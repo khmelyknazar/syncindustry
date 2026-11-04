@@ -37,7 +37,7 @@ export function SectionHeading({
   return (
     <ScrollReveal className="flex max-w-[640px] flex-col gap-3">
       {eyebrow && (
-        <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-[var(--color-brand-primary)]">
+        <p className="text-[14px] font-medium text-[var(--color-text-secondary)]">
           {eyebrow}
         </p>
       )}

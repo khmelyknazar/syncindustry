@@ -9,22 +9,31 @@ import { productNavItems, type ProductNavItem } from "@/config/navigation";
  * (`NavigationMenuContent`) and the mobile drawer's expanded Products
  * section — same markup, two different containers, so the "available
  * vs comingSoon" rendering rule lives in exactly one place.
+ *
+ * `onNavigate` викликається після кліку на пункт: мобільне меню
+ * використовує його, щоб закритися, коли користувач обрав послугу.
  */
-export function ProductsMenu() {
+export function ProductsMenu({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div
       role="list"
       className="grid grid-cols-1 gap-1 sm:grid-cols-2"
-      aria-label="Продукти Sync Industry"
+      aria-label="Послуги Sync Industry"
     >
       {productNavItems.map((item) => (
-        <ProductMenuItem key={item.title} item={item} />
+        <ProductMenuItem key={item.title} item={item} onNavigate={onNavigate} />
       ))}
     </div>
   );
 }
 
-function ProductMenuItem({ item }: { item: ProductNavItem }) {
+function ProductMenuItem({
+  item,
+  onNavigate,
+}: {
+  item: ProductNavItem;
+  onNavigate?: (() => void) | undefined;
+}) {
   const { title, description, href, icon: Icon, status } = item;
   const isAvailable = status === "available";
 
@@ -43,7 +52,7 @@ function ProductMenuItem({ item }: { item: ProductNavItem }) {
         className={cn(
           "flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-md)]",
           isAvailable
-            ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-brand-primary)]"
+            ? "bg-[var(--ultramarine-500)]/15 text-[var(--color-text-link)]"
             : "bg-[var(--graphite-700)] text-[var(--color-text-disabled)]",
         )}
       >
@@ -86,7 +95,12 @@ function ProductMenuItem({ item }: { item: ProductNavItem }) {
   }
 
   return (
-    <Link href={href} role="listitem" className="block rounded-[var(--radius-md)]">
+    <Link
+      href={href}
+      role="listitem"
+      onClick={onNavigate}
+      className="block rounded-[var(--radius-md)]"
+    >
       {content}
     </Link>
   );

@@ -116,7 +116,7 @@ export const products: Product[] = [
   {
     slug: "erp",
     title: "ERP",
-    description: "Фінанси, ресурси та операційне управління.",
+    description: "Облік фінансів, ресурсів і операцій.",
     icon: Boxes,
     status: "comingSoon",
     href: "/product/erp" as Route,

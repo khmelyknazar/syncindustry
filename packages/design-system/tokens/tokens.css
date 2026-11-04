@@ -178,7 +178,8 @@
   --color-border-strong: var(--graphite-600);
   --color-text-primary: var(--graphite-50);
   --color-text-secondary: var(--graphite-300);
-  --color-text-disabled: var(--graphite-500);
+  --color-text-disabled: #7c87a1; /* ≥4.5:1 на фоні й на поверхнях: ним набрано читабельні підписи */
+  --color-text-link: var(--ultramarine-400); /* текстові посилання: --brand-primary дає лише 4.1:1 на темному */
   --color-hover: var(--graphite-700);
   --color-pressed: var(--graphite-600);
   --color-brand-primary: var(--ultramarine-500);
@@ -209,7 +210,8 @@
   --color-border-strong: var(--graphite-300);
   --color-text-primary: var(--graphite-800);
   --color-text-secondary: var(--graphite-500);
-  --color-text-disabled: var(--graphite-400);
+  --color-text-disabled: #5d6a82;
+  --color-text-link: var(--ultramarine-600);
   --color-hover: var(--graphite-100);
   --color-pressed: var(--graphite-200);
   --color-brand-primary-hover: var(--ultramarine-600);
